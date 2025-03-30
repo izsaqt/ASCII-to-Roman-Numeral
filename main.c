@@ -24,7 +24,7 @@ void toRoman(int num, char *roman) {
 }
 
 int main() {
-    Roman romans[52]; 
+    Roman romans[54]; 
     for (int i = 0; i < 26; i++) {
         char roman[10] = "";
         int value = 'A' + i; 
@@ -43,31 +43,40 @@ int main() {
         strcpy(romans[26 + i].roman, roman);
     }
 
-    for (int i = 0; i < 52; i++) {
+    romans[53].ascii = ' ';
+    romans[53].value = 32; 
+    strcpy(romans[53].roman, "XXXII");
+
+    for (int i = 0; i < 54; i++) {
         printf("{'%c', %d, \"%s\"}, ", romans[i].ascii, romans[i].value, romans[i].roman);
     }
     printf("\n"); 
+
+    //const char *re = "simple re idk idk idk"; /
 
         char input[26];
         printf("Enter | ");
         fgets(input, sizeof(input), stdin);
     
-        char finalValue[26] = ""; 
+        char finalValue[256] = ""; 
 
         for (int i = 0; i < strlen(input); i++) {
             char currentChar = input[i];
-            if ((currentChar >= 'A' && currentChar <= 'Z') || (currentChar >= 'a' && currentChar <= 'z')) {
-                for (int j = 0; j < 52; j++) {
+            if ((currentChar >= 'A' && currentChar <= 'Z') || 
+                (currentChar >= 'a' && currentChar <= 'z') || 
+                currentChar == ' ') {
+                for (int j = 0; j < 54; j++) {
                     if (romans[j].ascii == currentChar) {
                         printf("Character: '%c', ASCII Value: %d, Roman Numeral: %s\n", 
                             romans[j].ascii, romans[j].value, romans[j].roman);
-
-                            strcat(finalValue, romans[j].roman);
+                        
+                        strcat(finalValue, romans[j].roman);
                         break;
                     }
                 }
             }
         }
+        
         printf("%s", finalValue);
 
     return 0;
