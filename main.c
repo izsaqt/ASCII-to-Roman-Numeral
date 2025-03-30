@@ -52,7 +52,7 @@ int main() {
     }
     printf("\n"); 
 
-    //const char *re = "simple re idk idk idk"; /
+    //const char *re = "simple re idk idk idk"; 
 
         char input[26];
         printf("Enter | ");
